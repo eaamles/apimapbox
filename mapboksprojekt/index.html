@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+	<meta charset="utf-8">
+	<title>BeerFest</title>
+	<meta name="author" content="Your Name">
+	<meta name="description" content="Example description">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" type="image/x-icon" href=""/>
+</head>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+<body>
+	<header>
+    
+  
+	    <section class="intro">
+	        <div class="inner">
+	            <div class="content">
+                <h1>BeerFest</h1>
+                <h2>ØL, ØL Og Mere ØL</h2>
+	                
+	            </div>
+	        </div>
+	        
+	        	
+	    </section>
+	</header>
+	<main>
+   
+    <section id="sektion2">
+       <img id="oktavatar" src="images/oktavatar.png" alt="figur">
+        
+    </section>
+    
+     <section id="sektion3">
+     
+      
+          <h1>Se vejret over Aarhus</h1>
+            <!-- the weather will appear below -->
+                <div id="result"></div>
+    <script>
+        /*
+  THE DOCUMENTATION MAY CONFUSE YOU A BIT, SO HERE'S A HOWTO
+  DON'T
+  please, don't use this sample:
+  https://samples.openweathermap.org/data/2.5/weather?q=Aarhus,DK&appid=YOURTOKENHERE
+  DO
+  Use the api as below:
+  https://api.openweathermap.org/data/2.5/weather?q=Aarhus,DK&appid=YOURTOKENHERE
+  PS:
+  Probably your token will not activate right away. Have some patience here.
+  */
+        const token = "f06a0abf30fe08cb1fea4a61f9ad7755"; // save your token in this variable
+        const aarhus = "https://api.openweathermap.org/data/2.5/weather?q=Aarhus,DK&appid=" +
+            token +"&units=metric";
+        $(document).ready(function() {
+            // get the weather data
+            fetch(aarhus).then(response => {
+                return response.json();
+            }).then(data => {
+                // Work with JSON data here
+                console.log(data); // show what's in the json
+                $('#result').append(
+                    '<div class="weatherInfo">' +
+                    data.weather[0].main +
+                    ' in ' +
+                    data.name +
+                    '<figure><img src="http://openweathermap.org/img/w/' +
+                    data.weather[0].icon +
+                    '.png" alt="The weather : ' +
+                    data.weather[0].main +
+                    '"></figure>' +
+                    '</div>');
+                // here are the icons: https://openweathermap.org/weather-conditions 
+            }).catch(err => {
+                // Do something for an error here
+                console.log('There was an error ...');
+            });
+        }); // document ready end
+    </script>
+       
+        
+</section>
+    
+    
+  
+    
+<section id="section4">
+
+   <style>
+	
+	#map { top: 0; bottom: 0; width: 100%; }
+</style>
+
+
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibWlra2VsbGV0aCIsImEiOiJja2cxemZ0eGUyd2k4MnlzOG1icXBqdnA3In0.wpNwwQbMk0IIJbDS8G2Caw';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+        style: 'mapbox://styles/mikkelleth/ckg26979o0f4i19olli55zmsy', // style URL
+            center: [10.188640,56.162929], // starting position [lng, lat]
+                zoom: 12 // starting zoom
+});
+    
+    map.on('load', function () {
+            map.loadImage('https://upload.wikimedia.org/wikipedia/commons/7/7c/201408_cat.png',
+                            function (error, image) {
+                                if (error) throw error;
+                            map.addImage('cat', image);
+                map.addSource('point', {
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+{
+'type': 'Feature',
+'geometry': {
+'type': 'Point',
+'coordinates': [10.188640, 56.162929]
+}
+}
+]
+}
+});
+map.addLayer({
+'id': 'points',
+'type': 'symbol',
+'source': 'point',
+'layout': {
+'icon-image': 'cat',
+'icon-size': 0.25
+}
+});
+}
+);
+});
+</script>
+
+</section>
+    
+    <section id="section5">
+        
+    </section>
+	    
+	</main>
+	<footer></footer>
+	<script type="text/javascript" src=""></script>
+</body>
+
+</html>

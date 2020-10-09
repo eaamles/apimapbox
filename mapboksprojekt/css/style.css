@@ -1,0 +1,79 @@
+
+html,body{
+    margin:0;
+    padding:0;
+    height:1000px;
+    width:100%;
+   
+}
+.intro{
+    height:1200px;
+    width:100%;
+    margin:auto;
+    background-image: url(../images/oktfest.jpg);
+  
+    display: table;
+    top:0;
+    background-size: cover;
+    
+  
+}
+.intro.inner{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    max-width: none;
+}
+.content{
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    
+    
+    
+}
+.content h1 {
+    color: #f9f3f4;
+    text-shadow: 0px 0px 300px #000;
+    font-size: 500%;
+}
+.content h2{
+    border-radius: 9px;
+    color:#FFEEE8;
+    font-size: 150%;
+    padding: 10px 20px;
+    border: solid #FFEEE8 2px;
+
+}
+#sektion2{
+    height:300px;
+}
+#oktavatar{
+    height: 100%;
+    margin:auto;
+    display: table;
+    margin-top: 250px;
+}
+#sektion3{
+    height:600px; 
+    text-align: center;
+    font-family: sans serif;
+    background: #5f6ea2;
+    color: #fff;
+}
+#section4{
+    height: 900px;
+}
+#map{
+    height: 900px;
+    width:700px;
+    
+}
+#section5{
+    height: 200px;
+    background-color: lightblue;
+}
+
+
+   
+    
